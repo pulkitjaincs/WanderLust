@@ -145,6 +145,6 @@ Contributions are welcome! Please fork the repository and submit pull requests.
 
 ⭐ If you find this project helpful, please give it a star!
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/wanderlust?style=social)](https://github.com/yourusername/wanderlust/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/pulkitjaincs/wanderlust?style=social)](https://github.com/pulkitjaincs/wanderlust/stargazers)
 
 </div>
