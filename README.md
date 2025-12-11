@@ -83,7 +83,7 @@ npm run dev
 ```
 *Client runs on default Vite port (usually 5173)*
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 wanderlust/
