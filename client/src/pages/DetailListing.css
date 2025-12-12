@@ -1,0 +1,75 @@
+/* Detail Listing Styles */
+.listing-detail-container {
+    max-width: 800px;
+    /* Reading width */
+    margin: 2rem auto 4rem;
+}
+
+.listing-title-section {
+    margin-bottom: 2rem;
+}
+
+.listing-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.listing-location {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-main);
+    text-decoration: underline;
+}
+
+.listing-hero-image {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.listing-content-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.listing-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.listing-price-tag {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.listing-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+}
+
+.listing-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+.btn-danger {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: var(--primary-hover);
+}

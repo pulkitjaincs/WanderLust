@@ -262,4 +262,10 @@ const sampleListings = [
   },
 ];
 
-module.exports = { data: sampleListings };
+const listingsWithRatings = sampleListings.map(listing => ({
+  ...listing,
+  rating: (Math.random() * (5.0 - 3.5) + 3.5).toFixed(1), // Random rating between 3.5 and 5.0
+  reviewCount: Math.floor(Math.random() * 500) + 10 // Random reviews between 10 and 510
+}));
+
+module.exports = { data: listingsWithRatings };

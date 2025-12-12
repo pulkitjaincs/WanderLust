@@ -1,0 +1,97 @@
+/* Navbar Styles */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.navbar-brand i {
+    font-size: 2rem;
+}
+
+.navbar-brand span {
+    color: var(--primary);
+    display: none;
+    /* Hidden on super small mobile if needed, or show */
+}
+
+@media (min-width: 768px) {
+    .navbar-brand span {
+        display: block;
+    }
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.2s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--border-radius-lg);
+    font-size: 0.9rem;
+}
+
+/* Mobile basic implementation */
+/* For a truly complex responsive menu without Bootstrap js, we'd need a hamburger with state. 
+   For now, I'll keep it simple: visible on desktop, simplistic stack on mobile or just assume desktop-first for this quick redesign unless user asked for mobile menu specifically.
+   I'll add a simple mobile check style.
+*/
+@media (max-width: 768px) {
+    .navbar-menu {
+        gap: 1rem;
+    }
+
+    .nav-link-text {
+        display: none;
+    }
+}

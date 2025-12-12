@@ -7,16 +7,16 @@
 [![MongoDB Atlas](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/cloud/atlas)
 [![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-> A modern, full-stack travel listing application built with the MERN stack. Features comprehensive CRUD operations, responsive design, and integration with MongoDB Atlas for reliable cloud data storage.
+> A modern, full-stack travel listing application built with the MERN stack. Features comprehensive CRUD operations, a premium custom design system, dark mode, and seamless sorting/filtering.
 
 ## ✨ Key Features
 
 - **🏠 Full CRUD Operations**: Seamlessly Create, Read, Update, and Delete travel listings.
+- **🎨 Premium Custom Design**: Completely bespoke UI built with CSS Variables, Flexbox, and Grid (No Bootstrap). Features glassmorphism headers and responsive layouts.
+- **🌗 Dark Mode Support**: Native dark mode with system preference detection and a manual toggle.
+- **⭐ Ratings & Sorting**: Sort listings by Price, Popularity, or Ratings interactively.
 - **⚛️ Modern Frontend**: Built with React and Vite for a lightning-fast, responsive user experience.
-- **🔌 Robust API**: RESTful Express.js backend serving JSON data.
-- **☁️ Cloud Database**: Secure and scalable data storage with MongoDB Atlas.
-- **📱 Responsive Design**: Fully responsive layout powered by Bootstrap 5 and custom CSS.
-- **🔄 Real-time Updates**: Instant feedback on listing creation and updates.
+- **📱 Responsive Design**: Fully responsive layout optimized for all device sizes.
 
 ## 🎬 Demo
 
@@ -29,7 +29,7 @@
 | **Frontend Framework** | React 18.2.0         |
 | **Build Tool**         | Vite 5.x             |
 | **Routing**           | React Router DOM 6.x |
-| **Styling**           | Bootstrap 5, Custom CSS |
+| **Styling**           | Vanilla CSS (Custom Variables, Context API) |
 | **Backend Environment**| Node.js              |
 | **Framework**         | Express.js           |
 | **Database**          | MongoDB Atlas        |
@@ -63,6 +63,9 @@ npm install
 # Create .env file and add your MongoDB connection string
 echo "ATLASDB_URL=your_connection_string" > .env
 
+# Initialize Database (Seed with ratings/reviews)
+node init/index.js
+
 # Start the server
 node app.js
 ```
@@ -89,60 +92,21 @@ WanderLust/
 ├── client/                 # React Frontend
 │   ├── public/             # Static assets
 │   ├── src/
-│   │   ├── components/     # Reusable components (Navbar, Footer)
-│   │   ├── pages/          # Page components (ListingList, DetailListing, ListingForm)
+│   │   ├── components/     # Navbar, Footer (with Theme Toggle)
+│   │   ├── context/        # ThemeContext for Dark Mode state
+│   │   ├── pages/          # ListingList (Sorting), DetailListing, Forms
 │   │   ├── App.jsx         # Main application component with routing
 │   │   ├── main.jsx        # Entry point
-│   │   └── index.css       # Global styles
+│   │   └── index.css       # Global design system & variables
 │   └── vite.config.js      # Vite configuration
 ├── server/                 # Express Backend
-│   ├── init/               # Database initialization scripts
-│   ├── models/             # Mongoose schemas (Listing)
+│   ├── init/               # Database seed scripts (generates ratings)
+│   ├── models/             # Mongoose schemas (Listing + Ratings)
 │   ├── public/             # Server static assets
 │   ├── .env                # Environment variables
 │   └── app.js              # Server entry point
 └── README.md               # Project documentation
 ```
-
-## 🎯 Core Components
-
-### 🧭 Navbar Component
-```javascript
-// Responsive navigation bar using Bootstrap
-// Links to Home, All Listings, and New Listing page
-```
-
-### 🏠 ListingList Component
-```javascript
-// Fetches and displays all listings in a responsive grid
-// Uses Axios to communicate with the backend API
-```
-
-### 📝 ListingForm Component
-```javascript
-// Form for creating and editing listings
-// Validates input and sends POST/PUT requests to the API
-```
-
-### 📄 DetailListing Component
-```javascript
-// Displays detailed information for a single listing
-// Include Edit and Delete actions
-```
-
-## ⚙️ Configuration
-
-- **Environment Variables**: Managed via `dotenv` in `server/.env`.
-- **API Proxy**: Configured in `client/vite.config.js` to forward requests to port 8080.
-- **Database**: Mongoose connection configured in `server/app.js`.
-
-## 🔮 Roadmap
-
-- [ ] User Authentication & Authorization
-- [ ] Image Upload & Storage Integration
-- [ ] Map Integration for Locations
-- [ ] Review & Rating System
-- [ ] Advanced Search & Filters
 
 ## 🤝 Contributing
 

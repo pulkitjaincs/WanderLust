@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import './DetailListing.css';
 
 const DetailListing = () => {
     const { id } = useParams();
@@ -24,6 +25,7 @@ const DetailListing = () => {
     }, [id]);
 
     const handleDelete = async () => {
+        if (!window.confirm("Are you sure you want to delete this listing?")) return;
         try {
             await axios.delete(`/listings/${id}`);
             navigate('/listings');
@@ -36,24 +38,31 @@ const DetailListing = () => {
     if (!listing) return <div className="container mt-3">Listing not found</div>;
 
     return (
-        <div className="row mt-3">
-            <div className="col-8 offset-2">
-                <h3>{listing.title}</h3>
-            </div>
-            <div className="card col-6 offset-2 show-card listing-card">
-                <img src={listing.image} className="card-img-top show-img" alt={listing.title} />
-                <div className="card-body">
-                    <p className="card-text">
-                        {listing.description} <br />
-                        &#8377; {listing.price.toLocaleString("en-IN")} <br />
-                        {listing.location} <br />
-                        {listing.country}
-                    </p>
+        <div className="container listing-detail-container">
+            <div className="listing-title-section">
+                <h1 className="listing-heading">{listing.title}</h1>
+                <div className="listing-location">
+                    {listing.location}, {listing.country}
                 </div>
             </div>
-            <div className="btns">
-                <Link to={`/listings/${listing._id}/edit`} className="btn btn-dark col-1 offset-2 edit-btn">Edit</Link>
-                <button onClick={handleDelete} className="btn btn-dark col-1 offset-1">Delete</button>
+
+            <img src={listing.image} className="listing-hero-image" alt={listing.title} />
+
+            <div className="listing-content-grid">
+                <div className="listing-info-section">
+                    <div className="listing-price-tag">
+                        &#8377; {listing.price.toLocaleString("en-IN")} <span style={{ fontSize: '1rem', fontWeight: 400 }}> / night</span>
+                    </div>
+
+                    <p className="listing-description">
+                        {listing.description}
+                    </p>
+                </div>
+
+                <div className="listing-actions">
+                    <Link to={`/listings/${listing._id}/edit`} className="btn btn-dark">Edit Listing</Link>
+                    <button onClick={handleDelete} className="btn btn-primary">Delete Listing</button>
+                </div>
             </div>
         </div>
     );
