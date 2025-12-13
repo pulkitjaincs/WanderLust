@@ -8,10 +8,22 @@ const ExpressError = require("./utils/ExpressError.js");
 require("dotenv").config();
 
 const compression = require("compression");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
 
 const listingsRouter = require("./routes/listings.js");
 
+app.use(helmet()); // Secure HTTP headers
 app.use(compression()); // Compress all responses
+
+// Rate Limiting
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+app.use(limiter);
 
 // Cache headers for static assets & GET requests
 app.use((req, res, next) => {
@@ -37,7 +49,9 @@ main().then(() => {
 })
 
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(MONGO_URL, {
+        maxPoolSize: 10 // Maintain up to 10 socket connections
+    });
 }
 
 app.get("/", (req, res) => {

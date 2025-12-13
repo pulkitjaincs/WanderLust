@@ -15,7 +15,8 @@
 - **🎨 Premium Custom Design**: Completely bespoke UI built with CSS Variables, Flexbox, and Grid (No Bootstrap). Features glassmorphism headers and responsive layouts.
 - **⚡ Enhanced UX**: Features Skeleton Loading states and "Load More" pagination for a premium experience.
 - **🚀 High Performance**: Optimized with MongoDB Indexes, `.lean()` queries, Gzip compression, and caching strategies.
-- **🛡️ Robust Security**: Server-side input validation using Joi to prevent data corruption and injection attacks.
+- **🛡️ Enterprise Security**: Protected with `Helmet` (Secure Headers), `Rate Limiting` (DDoS protection), and Joi Validation.
+- **⚡ Lazy Loading**: React Code Splitting via `Suspense` and `React.lazy` for lightning-fast initial load.
 - **🌗 Dark Mode Support**: Native dark mode with system preference detection and a manual toggle.
 - **🛡️ Error Handling**: React Error Boundaries to gracefully handle crashes and prevent white screens.
 - **⭐ Ratings & Sorting**: Sort listings by Price, Popularity, or Ratings interactively.
@@ -35,7 +36,7 @@
 | **Routing**           | React Router DOM 6.x |
 | **Styling**           | Vanilla CSS (Custom Variables, Context API) |
 | **Backend Environment**| Node.js              |
-| **Framework**         | Express.js           |
+| **Framework**         | Express.js (with Rate Limiting, Helmet, Compression) |
 | **Database**          | MongoDB Atlas        |
 | **ODM**               | Mongoose             |
 | **API Client**        | Axios                |
