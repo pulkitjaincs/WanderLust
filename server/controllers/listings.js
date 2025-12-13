@@ -8,7 +8,8 @@ module.exports.index = async (req, res) => {
     const totalListings = await Listing.countDocuments({});
     const listings = await Listing.find({})
         .skip(skip)
-        .limit(limit);
+        .limit(limit)
+        .lean();
 
     res.json({
         listings,
@@ -20,7 +21,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.show = async (req, res) => {
     let { id } = req.params;
-    let listing = await Listing.findById(id);
+    let listing = await Listing.findById(id).lean();
     res.json(listing);
 };
 

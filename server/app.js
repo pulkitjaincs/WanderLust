@@ -7,12 +7,26 @@ const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
 require("dotenv").config();
 
+const compression = require("compression");
+
 const listingsRouter = require("./routes/listings.js");
+
+app.use(compression()); // Compress all responses
+
+// Cache headers for static assets & GET requests
+app.use((req, res, next) => {
+    if (req.method === 'GET') {
+        res.set('Cache-Control', 'public, max-age=300'); // Cache for 5 minutes
+    } else {
+        res.set('Cache-Control', 'no-store');
+    }
+    next();
+});
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "/public"), { maxAge: '1d' })); // Cache static files for 1 day
 
 const MONGO_URL = process.env.ATLASDB_URL || "mongodb://localhost:27017/wanderlust";
 

@@ -38,7 +38,11 @@ const listingSchema = new Schema({
         type: Number,
         default: 0
     }
-})
+});
+
+listingSchema.index({ price: 1 });
+listingSchema.index({ rating: -1 });
+listingSchema.index({ reviewCount: -1 });
 
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;

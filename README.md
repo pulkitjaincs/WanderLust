@@ -14,6 +14,7 @@
 - **🏠 Full CRUD Operations**: Seamlessly Create, Read, Update, and Delete travel listings.
 - **🎨 Premium Custom Design**: Completely bespoke UI built with CSS Variables, Flexbox, and Grid (No Bootstrap). Features glassmorphism headers and responsive layouts.
 - **⚡ Enhanced UX**: Features Skeleton Loading states and "Load More" pagination for a premium experience.
+- **🚀 High Performance**: Optimized with MongoDB Indexes, `.lean()` queries, Gzip compression, and caching strategies.
 - **🛡️ Robust Security**: Server-side input validation using Joi to prevent data corruption and injection attacks.
 - **🌗 Dark Mode Support**: Native dark mode with system preference detection and a manual toggle.
 - **🛡️ Error Handling**: React Error Boundaries to gracefully handle crashes and prevent white screens.
