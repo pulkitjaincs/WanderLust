@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import './DetailListing.css';
 
+import { SkeletonDetail } from '../components/Loader';
+
 const DetailListing = () => {
     const { id } = useParams();
     const [listing, setListing] = useState(null);
@@ -34,7 +36,11 @@ const DetailListing = () => {
         }
     };
 
-    if (loading) return <div className="container mt-3">Loading...</div>;
+    if (loading) return (
+        <div className="container mt-3">
+            <SkeletonDetail />
+        </div>
+    );
     if (!listing) return <div className="container mt-3">Listing not found</div>;
 
     return (

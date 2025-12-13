@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './ListingList.css';
 
+import { SkeletonCard } from '../components/Loader';
+
 const ListingList = () => {
     const [listings, setListings] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -45,7 +47,7 @@ const ListingList = () => {
         <div className="container" style={{ marginTop: '2rem' }}>
             <div className="listing-grid">
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                    <div key={n} style={{ height: '300px', backgroundColor: '#f0f0f0', borderRadius: '12px' }}></div>
+                    <SkeletonCard key={n} />
                 ))}
             </div>
         </div>

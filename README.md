@@ -13,6 +13,7 @@
 
 - **🏠 Full CRUD Operations**: Seamlessly Create, Read, Update, and Delete travel listings.
 - **🎨 Premium Custom Design**: Completely bespoke UI built with CSS Variables, Flexbox, and Grid (No Bootstrap). Features glassmorphism headers and responsive layouts.
+- **⚡ Enhanced UX**: Features Skeleton Loading states for a smoother, premium user experience during data fetch.
 - **🌗 Dark Mode Support**: Native dark mode with system preference detection and a manual toggle.
 - **⭐ Ratings & Sorting**: Sort listings by Price, Popularity, or Ratings interactively.
 - **⚛️ Modern Frontend**: Built with React and Vite for a lightning-fast, responsive user experience.
@@ -92,7 +93,7 @@ WanderLust/
 ├── client/                 # React Frontend
 │   ├── public/             # Static assets
 │   ├── src/
-│   │   ├── components/     # Navbar, Footer (with Theme Toggle)
+│   │   ├── components/     # Navbar, Footer (with Theme Toggle), Skeleton Loaders
 │   │   ├── context/        # ThemeContext for Dark Mode state
 │   │   ├── pages/          # ListingList (Sorting), DetailListing, Forms
 │   │   ├── App.jsx         # Main application component with routing
