@@ -24,7 +24,7 @@ const Navbar = () => {
             <div className="container navbar-container">
                 <Link className="navbar-brand" to="/">
                     <i className="fa-regular fa-compass"></i>
-                    <span>WanderLust</span>
+                    <span>Stayza</span>
                 </Link>
 
                 <div className="navbar-menu">

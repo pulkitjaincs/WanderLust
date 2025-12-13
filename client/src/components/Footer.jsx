@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="container footer-container">
                 <div className="footer-brand">
-                    &copy; {new Date().getFullYear()} WanderLust, Inc.
+                    &copy; {new Date().getFullYear()} Stayza, Inc.
                 </div>
 
                 <div className="footer-links">

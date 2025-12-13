@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public"), { maxAge: '1d' })); // Cache static files for 1 day
 
-const MONGO_URL = process.env.ATLASDB_URL || "mongodb://localhost:27017/wanderlust";
+const MONGO_URL = process.env.ATLASDB_URL || "mongodb://localhost:27017/stayza";
 
 main().then(() => {
     console.log("connected to db");

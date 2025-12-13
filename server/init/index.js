@@ -5,7 +5,7 @@ const slugify = require("slugify");
 const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, "../.env") });
 
-const MONGO_URL = process.env.ATLASDB_URL || "mongodb://localhost:27017/wanderlust";
+const MONGO_URL = process.env.ATLASDB_URL || "mongodb://localhost:27017/stayza";
 
 main().then(() => {
     console.log("connected to db");

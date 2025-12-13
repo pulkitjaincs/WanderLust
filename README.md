@@ -1,4 +1,4 @@
-# 🧳 WanderLust
+# 🧳 Stayza
 
 [![MERN Stack](https://img.shields.io/badge/MERN-Stack-000000?style=for-the-badge&logo=mongodb&logoColor=47A248)](https://www.mongodb.com/mern-stack)
 [![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
@@ -52,8 +52,9 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/pulkitjaincs/WanderLust.git
-cd WanderLust
+```bash
+git clone https://github.com/pulkitjaincs/Stayza.git
+cd Stayza
 ```
 
 ### Backend Setup
@@ -139,8 +140,8 @@ Contributions are welcome! Please fork the repository and create a pull request.
 
 ⭐ **Star this repository if you found it helpful!**
 
-[![GitHub stars](https://img.shields.io/github/stars/pulkitjaincs/WanderLust?style=social)](https://github.com/pulkitjaincs/WanderLust/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/pulkitjaincs/WanderLust?style=social)](https://github.com/pulkitjaincs/WanderLust/network/members)
+[![GitHub stars](https://img.shields.io/github/stars/pulkitjaincs/Stayza?style=social)](https://github.com/pulkitjaincs/Stayza/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/pulkitjaincs/Stayza?style=social)](https://github.com/pulkitjaincs/Stayza/network/members)
 
 *Built with ❤️ using the MERN Stack*
 
