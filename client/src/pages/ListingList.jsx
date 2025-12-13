@@ -9,12 +9,20 @@ const ListingList = () => {
     const [listings, setListings] = useState([]);
     const [loading, setLoading] = useState(true);
     const [sortBy, setSortBy] = useState('recommended');
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
         const fetchListings = async () => {
             try {
-                const response = await axios.get('/listings');
-                setListings(response.data);
+                // If page 1, show loading skeletal. If > 1, allow background fetch (or show small loader)
+                if (page === 1) setLoading(true);
+
+                const response = await axios.get(`/listings?page=${page}&limit=8`);
+                const { listings: newListings, totalPages: total } = response.data;
+
+                setListings(prev => page === 1 ? newListings : [...prev, ...newListings]);
+                setTotalPages(total);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching listings:", error);
@@ -23,7 +31,13 @@ const ListingList = () => {
         };
 
         fetchListings();
-    }, []);
+    }, [page]);
+
+    const handleLoadMore = () => {
+        if (page < totalPages) {
+            setPage(prev => prev + 1);
+        }
+    };
 
     const sortListings = (items) => {
         const sortedItems = [...items];
@@ -37,13 +51,13 @@ const ListingList = () => {
             case 'famous':
                 return sortedItems.sort((a, b) => b.reviewCount - a.reviewCount);
             default:
-                return sortedItems; // 'recommended' uses default fetch order
+                return sortedItems;
         }
     };
 
     const sortedListings = sortListings(listings);
 
-    if (loading) return (
+    if (loading && page === 1) return (
         <div className="container" style={{ marginTop: '2rem' }}>
             <div className="listing-grid">
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
@@ -92,6 +106,14 @@ const ListingList = () => {
                     </Link>
                 ))}
             </div>
+
+            {page < totalPages && (
+                <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+                    <button className="btn btn-primary" onClick={handleLoadMore}>
+                        Load More
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

@@ -13,8 +13,10 @@
 
 - **🏠 Full CRUD Operations**: Seamlessly Create, Read, Update, and Delete travel listings.
 - **🎨 Premium Custom Design**: Completely bespoke UI built with CSS Variables, Flexbox, and Grid (No Bootstrap). Features glassmorphism headers and responsive layouts.
-- **⚡ Enhanced UX**: Features Skeleton Loading states for a smoother, premium user experience during data fetch.
+- **⚡ Enhanced UX**: Features Skeleton Loading states and "Load More" pagination for a premium experience.
+- **🛡️ Robust Security**: Server-side input validation using Joi to prevent data corruption and injection attacks.
 - **🌗 Dark Mode Support**: Native dark mode with system preference detection and a manual toggle.
+- **🛡️ Error Handling**: React Error Boundaries to gracefully handle crashes and prevent white screens.
 - **⭐ Ratings & Sorting**: Sort listings by Price, Popularity, or Ratings interactively.
 - **⚛️ Modern Frontend**: Built with React and Vite for a lightning-fast, responsive user experience.
 - **📱 Responsive Design**: Fully responsive layout optimized for all device sizes.
@@ -93,7 +95,7 @@ WanderLust/
 ├── client/                 # React Frontend
 │   ├── public/             # Static assets
 │   ├── src/
-│   │   ├── components/     # Navbar, Footer (with Theme Toggle), Skeleton Loaders
+│   │   ├── components/     # Navbar, Footer, Loader, ErrorBoundary
 │   │   ├── context/        # ThemeContext for Dark Mode state
 │   │   ├── pages/          # ListingList (Sorting), DetailListing, Forms
 │   │   ├── App.jsx         # Main application component with routing
@@ -101,9 +103,12 @@ WanderLust/
 │   │   └── index.css       # Global design system & variables
 │   └── vite.config.js      # Vite configuration
 ├── server/                 # Express Backend
-│   ├── init/               # Database seed scripts (generates ratings)
-│   ├── models/             # Mongoose schemas (Listing + Ratings)
+│   ├── controllers/        # Business Logic & Request Handling
+│   ├── init/               # Database seed scripts
+│   ├── models/             # Mongoose schemas
+│   ├── routes/             # API Routes (Listings)
 │   ├── public/             # Server static assets
+│   ├── schema.js           # Joi Validation Schemas
 │   ├── .env                # Environment variables
 │   └── app.js              # Server entry point
 └── README.md               # Project documentation
