@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 const Schema = mongoose.Schema;
 
 
@@ -6,6 +7,10 @@ const listingSchema = new Schema({
     title: {
         type: String,
         required: true,
+    },
+    slug: {
+        type: String,
+        unique: true,
     },
     description: {
         type: String,
@@ -43,6 +48,17 @@ const listingSchema = new Schema({
 listingSchema.index({ price: 1 });
 listingSchema.index({ rating: -1 });
 listingSchema.index({ reviewCount: -1 });
+
+// Slug Generator
+listingSchema.pre('validate', function (next) {
+    if (this.title) {
+        // Generate slug from title
+        this.slug = slugify(this.title, { lower: true, strict: true });
+        // Handle uniqueness (simple version - for production, you'd check DB)
+        // Since validate runs before save, we'll rely on Mongo's unique index to error if duplicate
+    }
+    next();
+});
 
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;

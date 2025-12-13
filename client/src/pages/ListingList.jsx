@@ -95,7 +95,8 @@ const ListingList = () => {
 
             <div className="listing-grid">
                 {sortedListings.map((listing) => (
-                    <Link key={listing._id} to={`/listings/${listing._id}`} className="listing-link">
+                    // Use slug if available, fallback to _id
+                    <Link key={listing._id} to={`/listings/${listing.slug || listing._id}`} className="listing-link">
                         <div className="listing-card">
                             <div className="listing-image-container">
                                 <img src={listing.image} className="listing-image" alt={listing.title} />
