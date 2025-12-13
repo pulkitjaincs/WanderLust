@@ -25,7 +25,7 @@
 
 ## 🎬 Demo
 
-**[🚀[ Live Demo Link](https://wander-lust-phi-pearl.vercel.app/)]**
+**[🚀[ Live Demo Link](https://stayza-phi-pearl.vercel.app/)]**
 
 ## 🛠️ Tech Stack
 
