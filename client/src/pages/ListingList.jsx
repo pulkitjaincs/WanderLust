@@ -19,7 +19,16 @@ const ListingList = () => {
                 if (page === 1) setLoading(true);
 
                 const response = await axios.get(`/listings?page=${page}&limit=8`);
-                const { listings: newListings, totalPages: total } = response.data;
+                let newListings = [];
+                let total = 1;
+
+                if (Array.isArray(response.data)) {
+                    // Legacy API support (if server wasn't restarted)
+                    newListings = response.data;
+                } else {
+                    newListings = response.data.listings || [];
+                    total = response.data.totalPages || 1;
+                }
 
                 setListings(prev => page === 1 ? newListings : [...prev, ...newListings]);
                 setTotalPages(total);
