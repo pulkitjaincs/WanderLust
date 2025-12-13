@@ -23,7 +23,7 @@
 
 ## 🎬 Demo
 
-**[🚀 Live Demo Link Coming Soon]**
+**[🚀[ Live Demo Link](https://wander-lust-phi-pearl.vercel.app/)]**
 
 ## 🛠️ Tech Stack
 
