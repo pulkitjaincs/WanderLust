@@ -4,26 +4,29 @@ const Listing = require("../models/listing");
 // Helper to find by ID or Slug
 async function findListing(idOrSlug) {
     if (mongoose.Types.ObjectId.isValid(idOrSlug)) {
-        return await Listing.findById(idOrSlug).lean();
+        console.log(`[DEBUG] Searching by ID: ${idOrSlug}`);
+        const found = await Listing.findById(idOrSlug).lean();
+        return found ? found : await Listing.findOne({ slug: idOrSlug }).lean();
     } else {
+        console.log(`[DEBUG] Searching by Slug: ${idOrSlug}`);
         return await Listing.findOne({ slug: idOrSlug }).lean();
     }
 }
 
 async function findListingAndModify(idOrSlug, updateData) {
     if (mongoose.Types.ObjectId.isValid(idOrSlug)) {
-        return await Listing.findByIdAndUpdate(idOrSlug, updateData, { new: true });
-    } else {
-        return await Listing.findOneAndUpdate({ slug: idOrSlug }, updateData, { new: true });
+        const found = await Listing.findByIdAndUpdate(idOrSlug, updateData, { new: true });
+        if (found) return found;
     }
+    return await Listing.findOneAndUpdate({ slug: idOrSlug }, updateData, { new: true });
 }
 
 async function findListingAndDelete(idOrSlug) {
     if (mongoose.Types.ObjectId.isValid(idOrSlug)) {
-        return await Listing.findByIdAndDelete(idOrSlug);
-    } else {
-        return await Listing.findOneAndDelete({ slug: idOrSlug });
+        const found = await Listing.findByIdAndDelete(idOrSlug);
+        if (found) return found;
     }
+    return await Listing.findOneAndDelete({ slug: idOrSlug });
 }
 
 module.exports.index = async (req, res) => {
@@ -47,7 +50,11 @@ module.exports.index = async (req, res) => {
 
 module.exports.show = async (req, res) => {
     let { id } = req.params;
+    console.log(`[DEBUG] Show listing for: ${id}`);
+
     let listing = await findListing(id);
+    console.log(`[DEBUG] Found listing: ${listing ? listing._id : 'NULL'}`);
+
     if (!listing) return res.status(404).json({ message: "Listing not found" });
     res.json(listing);
 };
