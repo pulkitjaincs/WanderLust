@@ -40,6 +40,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public"), { maxAge: '1d' })); // Cache static files for 1 day
 
+// Request Logger
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
+    next();
+});
+
 const MONGO_URL = process.env.ATLASDB_URL || "mongodb://localhost:27017/stayza";
 
 main().then(() => {
@@ -50,7 +56,7 @@ main().then(() => {
 
 async function main() {
     await mongoose.connect(MONGO_URL, {
-        maxPoolSize: 10 // Maintain up to 10 socket connections
+        serverSelectionTimeoutMS: 5000, // Fail fast if no connection
     });
 }
 
