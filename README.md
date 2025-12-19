@@ -1,4 +1,4 @@
-# 🧳 Stayza
+# 🧳 Stayza (prior WanderLust)
 
 [![MERN Stack](https://img.shields.io/badge/MERN-Stack-000000?style=for-the-badge&logo=mongodb&logoColor=47A248)](https://www.mongodb.com/mern-stack)
 [![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
